@@ -1,0 +1,11 @@
+{
+  "name": "packages-shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node ../..//scripts/lint-js.js src",
+    "build": "node -e \"console.log('shared package build ok')\"",
+    "test": "node --test src/contracts.test.js"
+  }
+}
