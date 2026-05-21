@@ -32,6 +32,13 @@ To run frontend:
 cd apps/frontend && npm run dev
 ```
 
+## Netlify deployment (frontend)
+
+This repository includes a root `netlify.toml` configured for the frontend workspace:
+
+- Build command: `npm --workspace apps/frontend run build`
+- Publish directory: `apps/frontend/dist/src`
+
 ## API overview
 
 - Health and metrics: `GET /health`, `GET /metrics`
