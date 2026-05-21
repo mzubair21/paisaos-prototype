@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  backend:
+    image: node:22
+    working_dir: /app
+    volumes:
+      - ..:/app
+    command: sh -c "cd apps/backend && node src/server.js"
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./environments/dev.env.example
+  frontend:
+    image: node:22
+    working_dir: /app
+    volumes:
+      - ..:/app
+    command: sh -c "cd apps/frontend && node scripts/serve.js"
+    ports:
+      - "4173:4173"
+    env_file:
+      - ./environments/dev.env.example

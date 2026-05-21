@@ -1,0 +1,13 @@
+{
+  "name": "apps-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "lint": "node ../..//scripts/lint-js.js src test",
+    "build": "node scripts/build.js",
+    "test": "node --test"
+  }
+}
