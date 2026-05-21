@@ -1,0 +1,4 @@
+[build]
+  base = "/"
+  command = "npm --workspace apps/frontend run build"
+  publish = "apps/frontend/dist/src"
