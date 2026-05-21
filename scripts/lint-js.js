@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import vm from 'node:vm';
+import { spawnSync } from 'node:child_process';
 
 const targets = process.argv.slice(2);
 if (targets.length === 0) {
@@ -31,11 +31,9 @@ for (const target of targets) {
 }
 
 for (const filePath of jsFiles) {
-  try {
-    const source = readFileSync(filePath, 'utf8');
-    new vm.SourceTextModule(source);
-  } catch (error) {
-    console.error(`Syntax error in ${filePath}: ${error.message}`);
+  const result = spawnSync(process.execPath, ['--check', filePath], { stdio: 'pipe', encoding: 'utf8' });
+  if (result.status !== 0) {
+    process.stderr.write(result.stderr || result.stdout || `Syntax check failed for ${filePath}\n`);
     process.exit(1);
   }
 }
